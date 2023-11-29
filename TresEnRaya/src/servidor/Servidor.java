@@ -27,12 +27,12 @@ public class Servidor {
                     
                     // Recibo el número de sala seleccionado por el cliente
                     int numeroSalaSeleccionada = in.readInt();
-                    // Intenta asignar al jugador a la sala seleccionada
+                    // Intento asignar al jugador a la sala seleccionada
                 	if (numeroSalaSeleccionada >= 1 && numeroSalaSeleccionada <= salas.size()) {
                         SalaDeJuego salaSeleccionada = salas.get(numeroSalaSeleccionada - 1);
 
                         if (!salaSeleccionada.isFull()) {
-                            salaSeleccionada.addJugador(socketJugador);
+                            salaSeleccionada.addJugador(socketJugador,out);
                             if (salaSeleccionada.getJugadores().size() == 2) {
                             	new Thread(salaSeleccionada).start();
                             }

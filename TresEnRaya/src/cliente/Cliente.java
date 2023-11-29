@@ -34,13 +34,15 @@ public class Cliente {
 	            // Recibe la respuesta del servidor
                 asignacion = in.readBoolean();
                 if (!asignacion) {
-                    // Si la asignación fue exitosa, salir del bucle
                 	System.out.println("La sala que has seleccionado esta llena o es incorrecta");
                 }
-                System.out.println(asignacion);
             
 			}
-			System.out.println("Estas en la sala");
+			
+			boolean juegoTerminado = false;
+			while(!juegoTerminado){
+				System.out.println(in.readLine());
+			}
 			
 	        
 		} catch (UnknownHostException e) {
