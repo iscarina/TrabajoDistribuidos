@@ -3,6 +3,8 @@ import java.io.*;
 import java.net.*;
 import java.util.*;
 
+import logica.TresEnRaya;
+
 public class Cliente {
     public static void main(String[] args){
 		try(Socket socket = new Socket("localhost", 12345);
@@ -39,11 +41,70 @@ public class Cliente {
             
 			}
 			
+			int numero;
 			boolean juegoTerminado = false;
+			//Leo mensaje bienvenida
+			System.out.println(in.readObject().toString());
 			while(!juegoTerminado){
-				System.out.println(in.readLine());
+				
+				//Leo mensaje turno
+				System.out.println(in.readObject().toString());
+				
+				if((boolean) in.readObject()) {
+					boolean posValida = false;
+					while(!posValida) {
+						//Leo y muestro el tablero fila
+						ArrayList<String> tablero = (ArrayList<String>) in.readObject();
+						System.out.println(tablero.get(0) + tablero.get(1) + tablero.get(2));
+						System.out.println(tablero.get(3) + tablero.get(4) + tablero.get(5));
+						System.out.println(tablero.get(6) + tablero.get(7) + tablero.get(8));
+						//Le pido fila
+						System.out.println(in.readObject().toString());
+						
+						numero = 0;
+						
+						while (!scanner.hasNextInt()) {
+				            System.out.println("Entrada no válida. Por favor, ingresa un número.");
+				            scanner.next();
+				        }
+						//inserto fila
+						numero = scanner.nextInt();
+						out.writeInt(numero);
+						out.flush();
+						
+						//Le pido columna
+						System.out.println(in.readObject().toString());
+						
+						while (!scanner.hasNextInt()) {
+				            System.out.println("Entrada no válida. Por favor, ingresa un número.");
+				            scanner.next();
+				        }
+						
+						//inserto columna
+						numero = scanner.nextInt();
+						out.writeInt(numero);
+						out.flush();
+						while(!(Integer.valueOf(numero) instanceof Integer)) {
+							System.out.println("Escribe un numero entero: ");
+							numero = scanner.nextInt();
+						}
+										
+						posValida = (Boolean)in.readObject();
+						if(!posValida) {
+							System.out.println(in.readObject().toString());
+						}
+					}
+					juegoTerminado = (Boolean)in.readObject();
+				}
 			}
+			//Muestro como ha quedado el tablero final
+			ArrayList<String> tablero = (ArrayList<String>) in.readObject();
+			System.out.println(tablero.get(0) + tablero.get(1) + tablero.get(2));
+			System.out.println(tablero.get(3) + tablero.get(4) + tablero.get(5));
+			System.out.println(tablero.get(6) + tablero.get(7) + tablero.get(8));
 			
+			//Muestro el ganador
+			System.out.println(in.readObject().toString());
 	        
 		} catch (UnknownHostException e) {
 			e.printStackTrace();

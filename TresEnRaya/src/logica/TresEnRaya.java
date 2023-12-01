@@ -1,4 +1,7 @@
 package logica;
+
+import java.util.ArrayList;
+
 public class TresEnRaya {
 	 
     //Represenntaciones del simbolo de los jugadores y del simbolo por defecto, que indica que esa casilla esta vacia.
@@ -182,16 +185,19 @@ public class TresEnRaya {
  
     /**
      * Muestra el ganador de la partida
+     * @return 
      */
-    public void mostrarGanador() {
+    public ArrayList<String> ganador() {
  
         char simbolo = coincidenciaFila();
- 
+        
+        ArrayList<String> g = new ArrayList<>();
+        
         if (simbolo != VACIO) {
- 
-            ganador(simbolo, 1);
- 
-            return;
+        	
+        	g.add(String.valueOf(simbolo));
+        	g.add(String.valueOf(1));
+            return g;
  
         }
  
@@ -199,9 +205,9 @@ public class TresEnRaya {
  
         if (simbolo != VACIO) {
  
-            ganador(simbolo, 2);
- 
-            return;
+        	g.add(String.valueOf(simbolo));
+        	g.add(String.valueOf(1));
+            return g;
  
         }
  
@@ -209,50 +215,48 @@ public class TresEnRaya {
  
         if (simbolo != VACIO) {
  
-            ganador(simbolo, 3);
- 
-            return;
+        	g.add(String.valueOf(simbolo));
+        	g.add(String.valueOf(1));
+            return g;
  
         }
         
-        System.out.println("Hay empate");
+        g.add("Habeis empatado");
+        return g;
  
     }
  
-    /**
-     * Funcion auxiliar de la anterior funcion
-     *
-     * @param simbolo
-     * @param tipo
-     */
-    private void ganador(char simbolo, int tipo) {
- 
-        switch (tipo) {
-            case 1:
-                if (simbolo == J1) {
-                    System.out.println("Ha ganado el Jugador 1 por linea");
-                } else {
-                    System.out.println("Ha ganado el Jugador 2 por linea");
-                }
- 
-                break;
-            case 2:
-                if (simbolo == J1) {
-                    System.out.println("Ha ganado el Jugador 1 por columna");
-                } else {
-                    System.out.println("Ha ganado el Jugador 2 por columna");
-                }
-                break;
-            case 3:
-                if (simbolo == J1) {
-                    System.out.println("Ha ganado el Jugador 1 por diagonal");
-                } else {
-                    System.out.println("Ha ganado el Jugador 2 por diagonal");
-                }
-                break;
-        }
- 
-    }
+//    /**
+//     * Funcion auxiliar de la anterior funcion
+//     *
+//     * @param simbolo
+//     * @param tipo
+//     */
+//    private String ganador(char simbolo, int tipo) {
+// 
+//        switch (tipo) {
+//            case 1:
+//                if (simbolo == J1) {
+//                    return("Ha ganado el Jugador 1 por linea");
+//                } else {
+//                	return("Ha ganado el Jugador 2 por linea");
+//                }
+// 
+//		case 2:
+//                if (simbolo == J1) {
+//                	return("Ha ganado el Jugador 1 por columna");
+//                } else {
+//                	return("Ha ganado el Jugador 2 por columna");
+//                }
+//		case 3:
+//                if (simbolo == J1) {
+//                	return("Ha ganado el Jugador 1 por diagonal");
+//                } else {
+//                	return("Ha ganado el Jugador 2 por diagonal");
+//                }
+//        }
+//		return null;
+//    }
  
     /**
      * Insertamos en una posición del tablero un simbolo
@@ -269,30 +273,20 @@ public class TresEnRaya {
     }
  
     /**
-     * Muestra el tablero
+     * Devuelve el tablero
      *
      */
-    public void mostrarTablero() {
- 
+    public ArrayList<String> getTablero() {
+    	
+		ArrayList<String> tablero = new ArrayList<>();
+    	
         for (int i = 0; i < this.tablero.length; i++) {
             for (int j = 0; j < this.tablero[0].length; j++) {
-                System.out.print(this.tablero[i][j] + " ");
+            	tablero.add(this.tablero[i][j] + " ");
             }
-            System.out.println("");
         }
- 
-    }
- 
-    /**
-     * Muestra el turno
-     */
-    public void mostrarTurnoActual() {
- 
-        if (turno) {
-            System.out.println("Le toca al jugador 1");
-        } else {
-            System.out.println("Le toca al jugador 2");
-        }
+        
+        return tablero;
  
     }
     
