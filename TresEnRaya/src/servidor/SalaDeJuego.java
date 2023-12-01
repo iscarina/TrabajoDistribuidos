@@ -63,7 +63,7 @@ public class SalaDeJuego implements Runnable,Serializable{
     	
     	ArrayList<String> g = tr.ganador();
     	
-    	if(g.get(1).equals(1)) {
+    	if(g.get(1).equals("1")) {
     		if(g.get(0).equalsIgnoreCase("X")){
     			enviarMensaje((Object)"¡HAS GANADO por linea!", this.jugadores.get(0));
     			enviarMensaje((Object)"PERDEDOR. Te han hecho linea", this.jugadores.get(1));
@@ -72,7 +72,7 @@ public class SalaDeJuego implements Runnable,Serializable{
     			enviarMensaje((Object)"PERDEDOR. Te han hecho linea", this.jugadores.get(0));
     		}
     	}
-    	else if(g.get(1).equals(2)) {
+    	else if(g.get(1).equals("2")) {
     		if(g.get(0).equalsIgnoreCase("X")){
     			enviarMensaje((Object)"¡HAS GANADO por columna!", this.jugadores.get(0));
     			enviarMensaje((Object)"PERDEDOR. Te han hecho columna", this.jugadores.get(1));
@@ -81,7 +81,7 @@ public class SalaDeJuego implements Runnable,Serializable{
     			enviarMensaje((Object)"PERDEDOR. Te han hecho columna", this.jugadores.get(0));
     		}
     	}
-    	else if(g.get(1).equals(3)) {
+    	else if(g.get(1).equals("3")) {
     		if(g.get(0).equalsIgnoreCase("X")){
     			enviarMensaje((Object)"¡HAS GANADO por diagonal!", this.jugadores.get(0));
     			enviarMensaje((Object)"PERDEDOR. Te han hecho diagonal", this.jugadores.get(1));
@@ -123,16 +123,15 @@ public class SalaDeJuego implements Runnable,Serializable{
         			 
         			 juegaTurno(tr, this.jugadores.get(1));
         		 }
+        		 enviarMensaje(tr.finPartida(), this.jugadores.get(0));
+    			 enviarMensaje(tr.finPartida(), this.jugadores.get(1));
         	 }
-        	 //Mando el fin de partida
-        	 enviarMensaje(tr.finPartida(),this.jugadores.get(0));
-        	 enviarMensaje(tr.finPartida(),this.jugadores.get(1));
         	 
              //Muestra el tablero a ambos jugadores
         	 enviarMensaje(tr.getTablero(),this.jugadores.get(0));
         	 enviarMensaje(tr.getTablero(),this.jugadores.get(1));
              
-             mostrarGanador(tr);
+        	 this.mostrarGanador(tr);
              
              enviarMensaje(true,this.jugadores.get(0));
              enviarMensaje(true,this.jugadores.get(1));
@@ -207,8 +206,6 @@ public class SalaDeJuego implements Runnable,Serializable{
         tr.insertarEn(fila, columna);
  
         tr.cambiaTurno();
-        
-        enviarMensaje(tr.finPartida(),socketJugador);
 
     }
  

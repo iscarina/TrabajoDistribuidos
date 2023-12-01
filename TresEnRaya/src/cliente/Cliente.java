@@ -50,7 +50,9 @@ public class Cliente {
 				//Leo mensaje turno
 				System.out.println(in.readObject().toString());
 				
-				if((boolean) in.readObject()) {
+				//Leo turno
+				boolean turno = (boolean) in.readObject();
+				if(turno) {
 					boolean posValida = false;
 					while(!posValida) {
 						//Leo y muestro el tablero fila
@@ -94,8 +96,8 @@ public class Cliente {
 							System.out.println(in.readObject().toString());
 						}
 					}
-					juegoTerminado = (Boolean)in.readObject();
 				}
+				juegoTerminado = (boolean) in.readObject();
 			}
 			//Muestro como ha quedado el tablero final
 			ArrayList<String> tablero = (ArrayList<String>) in.readObject();

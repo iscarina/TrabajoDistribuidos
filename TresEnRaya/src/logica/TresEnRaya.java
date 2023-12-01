@@ -206,7 +206,7 @@ public class TresEnRaya {
         if (simbolo != VACIO) {
  
         	g.add(String.valueOf(simbolo));
-        	g.add(String.valueOf(1));
+        	g.add(String.valueOf(2));
             return g;
  
         }
@@ -216,7 +216,7 @@ public class TresEnRaya {
         if (simbolo != VACIO) {
  
         	g.add(String.valueOf(simbolo));
-        	g.add(String.valueOf(1));
+        	g.add(String.valueOf(3));
             return g;
  
         }
