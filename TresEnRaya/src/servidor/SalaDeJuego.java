@@ -37,6 +37,13 @@ public class SalaDeJuego implements Runnable,Serializable{
     public synchronized String getNombre() {
         return this.nombreSala;
     }
+    
+    public synchronized void reiniciarSala() {
+        this.jugadores.clear();
+        this.inputs.clear();
+        this.outputs.clear();
+    }
+    
 
     private void enviarMensaje(Object mensaje, Socket destinatario) {
         try {
@@ -135,6 +142,9 @@ public class SalaDeJuego implements Runnable,Serializable{
              
              enviarMensaje(true,this.jugadores.get(0));
              enviarMensaje(true,this.jugadores.get(1));
+             
+             reiniciarSala();
+             
     	}  finally {
             // Cierre de recursos en el bloque finally
             for (Socket socket : jugadores) {

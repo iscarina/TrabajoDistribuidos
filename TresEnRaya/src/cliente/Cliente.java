@@ -3,8 +3,6 @@ import java.io.*;
 import java.net.*;
 import java.util.*;
 
-import logica.TresEnRaya;
-
 public class Cliente {
     public static void main(String[] args){
 		try(Socket socket = new Socket("localhost", 12345);
