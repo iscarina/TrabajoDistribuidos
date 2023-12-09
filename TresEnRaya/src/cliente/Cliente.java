@@ -5,7 +5,7 @@ import java.util.*;
 
 public class Cliente {
     public static void main(String[] args){
-		try(Socket socket = new Socket("localhost", 12345);
+		try(Socket socket = new Socket("192.168.1.49", 12345);
 			ObjectInputStream in = new ObjectInputStream(socket.getInputStream());
 			ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
 			Scanner scanner = new Scanner(System.in)) 
@@ -20,11 +20,11 @@ public class Cliente {
 				
 		        for (int i = 0; i < salasJuego.size(); i++) {
 		            String s = salasJuego.get(i);
-		            System.out.println(i + 1 + ". " + s + " - Jugadores: " + "" + "/2");
+		            System.out.println(i + 1 + ". " + s);
 		        }
 		        
 		        // Permite al usuario seleccionar una sala
-	            System.out.print("Seleccione una sala (1-" + salasJuego.size() + "): ");
+	            System.out.print("Seleccione una sala (1-" + salasJuego.size() + ") o seleccione 0 para cerrar el juego: ");
 	            int numeroSala = scanner.nextInt();
 	
 	            // Envía el número de sala seleccionada al servidor

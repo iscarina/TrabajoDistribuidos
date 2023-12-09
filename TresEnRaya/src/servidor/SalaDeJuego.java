@@ -103,7 +103,6 @@ public class SalaDeJuego implements Runnable,Serializable{
     	}
     }
     
-    @Override
     public void run() {
     	System.out.println("La sala " + nombreSala + " ha comenzado.");
     	
@@ -171,6 +170,7 @@ public class SalaDeJuego implements Runnable,Serializable{
                 }
             }
         }
+    	reiniciarSala();
     }
          
     
